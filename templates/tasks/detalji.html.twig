@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello TasksController!{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<div class="example-wrapper">
+
+
+    <table class="table">
+        <thead>
+            <tr>
+            <th scope="col">Project</th>
+            <th scope="col">Name</th>
+            <th scope="col">Description</th>
+            <th scope="col">Deadline</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for ispis in tasks %}
+            <tr>
+                <td>{{ispis.project.getProjectName()}}</td>
+                <td>{{ispis.employee.getFirstname()}} {{ispis.employee.getLastname}}</td>
+                <td>{{ispis.taskdescription}}</td>
+                <td>{{ispis.taskdeadline}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

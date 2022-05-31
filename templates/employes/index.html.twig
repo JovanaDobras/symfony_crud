@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello EmployesController!{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<div class="example-wrapper">
+    <div>
+        <a href="{{ path('employees_add') }}"><button>Add user</button></a>
+    </div>
+   <table class="table">
+        <thead>
+            <tr>
+            <th scope="col">Position</th>
+            <th scope="col">First name</th>
+            <th scope="col">Last name</th>
+            <th scope="col">Salary</th>
+            <th scope="col">Email</th>
+            <th scope="col">Options</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            {% for employee in employees %}
+            <tr>
+                <td>{{employee.position.getPositionName()}}</td>
+                <td>{{employee.firstname}}</td>
+                <td>{{employee.lastname}}</td>
+                <td>{{employee.salary}}</td>
+                <td>{{employee.email}}</td>
+                <td>
+                    <a href="{{ path('employees_delete', {id: employee.id}) }}"><button>Delete</button></a>
+                    <a href="{{ path('employees_update', {id: employee.id}) }}"><button>Update</button></a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
